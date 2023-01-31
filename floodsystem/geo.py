@@ -5,8 +5,6 @@
 geographical data.
 
 """
+#from floodsystem.stationdata import build_station_list
 
 from .utils import sorted_by_key  # noqa
-
-def station_within_radius(stations, centre, r):
-    
