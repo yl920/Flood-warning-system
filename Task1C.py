@@ -11,13 +11,17 @@ def stations_within_radius(stations, centre, r):
 
     for station in init_stations:
         if station.name in stations:
-            return station
-        centre_distance = haversine(centre, station.coord)
-        if centre_distance <= r:
-            return station.name
+            centre_distance = haversine(centre, station.coord)
+            if centre_distance <= r:
+                return station.name
+            
+
+        
         
 
-list = ('Bourton Dickler', 'Surfleet Sluice', 'Gaw Bridge')
+list = ['Bin Brook', 'Cambridge Baits Bite', "Cambridge Byron's Pool",
+ 'Cambridge Jesus Lock', 'Comberton', 'Dernford', 'Girton',
+ 'Haslingfield Burnt Mill', 'Lode', 'Oakington', 'Stapleford']
 print(stations_within_radius(list, (52.2053, 0.1218), 10))
 
 
