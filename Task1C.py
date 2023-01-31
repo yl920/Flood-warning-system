@@ -4,15 +4,15 @@ The required function signature is:
 where stations is a list of MonitoringStation objects, centre is the coordinate x and r is the radius.'''
 
 from floodsystem.stationdata import build_station_list
-import math
+import haversine
 
 def stations_within_radius(stations, centre, r):
     init_stations = build_station_list()
 
     for station in init_stations:
         if station.name in stations:
-            return station.name
-        centre_distance = math.sqrt((station.coord [1] - centre[1])^2 + (station.coord [0] - centre[0])^2)
+            return station
+        centre_distance = haversine(centre, station.coord)
         if centre_distance <= r:
             return station.name
         
