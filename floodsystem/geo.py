@@ -20,5 +20,3 @@ def stations_by_distance(stations, p):
         list(len(list)-1).append(station_name)
         list(len(list)-1).append(d)
     sorted_by_key(list,1)
-
-#print(stations_by_distance())
