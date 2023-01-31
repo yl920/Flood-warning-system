@@ -13,8 +13,8 @@ from haversine import haversine, Unit
 list=[]
 def stations_by_distance(stations, p):
     for i in  stations:
-        station_name = i["Station name"]
-        coords = i["coordinate"]
+        station_name = i["Station name:"]
+        coords = i["coordinate:"]
         d = haversine(p,coords)
         list.append(())
         list(len(list)-1).append(station_name)
