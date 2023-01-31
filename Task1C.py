@@ -11,7 +11,7 @@ def stations_within_radius(stations, centre, r):
 
     for station in init_stations:
         if station.name in stations:
-            return station
+            return station.name
         centre_distance = math.sqrt((station.coord [1] - centre[1])^2 + (station.coord [0] - centre[0])^2)
         if centre_distance <= r:
             return station.name
