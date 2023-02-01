@@ -4,6 +4,10 @@ The required function signature is:
 where stations is a list of MonitoringStation objects, centre is the coordinate x and r is the radius.'''
 
 from floodsystem.stationdata import build_station_list
+from floodsystem.geo import stations_within_radius
+
+#geo:
+
 from math import asin, sqrt, sin, cos, radians
 
 def haversine(a, b):
@@ -21,19 +25,32 @@ def haversine(a, b):
 
 
 def stations_within_radius(stations, centre, r):
-    init_stations = build_station_list()
+    
+    stations_in = []
 
-    for station in init_stations:
-        if station.name in stations:
-            centre_distance = haversine(centre, station.coord)
-            if centre_distance <= r:
-                return station.name
-            
-list = ['Bin Brook', 'Cambridge Baits Bite', "Cambridge Byron's Pool",
- 'Cambridge Jesus Lock', 'Comberton', 'Dernford', 'Girton',
- 'Haslingfield Burnt Mill', 'Lode', 'Oakington', 'Stapleford']
+    for station in stations:
+        centre_distance = haversine(centre, station.coord)
+        if centre_distance <= r:
+            stations_in.append(station.name)
+    return stations_in
 
-print(stations_within_radius(list, (52.2053, 0.1218), 10))
+#geo)
+
+
+def run():
+    
+    stations = build_station_list()
+    centre = (52.2053, 0.1218)
+    r = 10
+
+    within_radius = stations_within_radius(stations, centre, r)
+
+    print(f'Stations within {r} km from Cambridge centre: ')
+    print(sorted(within_radius))
+
+if __name__ == "__main__":
+    print("*** Task 1C: CUED Part IA Flood Warning System ***")
+    run()
 
 
     
