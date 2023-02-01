@@ -5,10 +5,15 @@
 geographical data.
 
 """
-from floodsystem.stationdata import build_station_list
 
 from .utils import sorted_by_key  # noqa
+
+from .station import MonitoringStation
+
+'''
 from haversine import haversine, Unit
+'''
+
 list=[]
 def stations_by_distance(stations, p):
     for i in  stations:

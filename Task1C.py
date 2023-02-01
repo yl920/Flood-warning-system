@@ -7,7 +7,7 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_within_radius
 
 #geo:
-
+'''
 from math import asin, sqrt, sin, cos, radians
 
 def haversine(a, b):
@@ -35,7 +35,7 @@ def stations_within_radius(stations, centre, r):
     return stations_in
 
 #geo)
-
+'''
 
 def run():
     
