@@ -6,9 +6,9 @@ geographical data.
 
 """
 
-from .utils import sorted_by_key  # noqa
-
-from .station import MonitoringStation
+#from floodsystem.utils import sorted_by_key  # noqa
+from .utils import *
+from .station import *
 
 from haversine import haversine, Unit
 
@@ -46,12 +46,12 @@ def stations_within_radius(stations, centre, r):
 
 
     ### 1B ###
-def stations_by_distance(stations, p):
-    for station in  stations:
-        station_name = station.name
-        coords = station.coord
-        d = haversine(p,coords)
-        list.append(())
-        list(len(list)-1).append(station_name)
-        list(len(list)-1).append(d)
-    sorted_by_key(list,1)
+def stations_by_distance(stations, p):   
+#Create new list "list" 
+#For each loop the name, town and distance for each station is produced as a tuple
+#these tuples are appended into the list "list"
+#Haversine function calculates the distance between 2 tuples p and coord of each station and returns a tuple
+    list = [(station.name, station.town, haversine(station.coord, p)) for station in stations]
+#Sort the list by its 3rd entry in each tuple, i.e. its distance
+    return sorted_by_key(list,2)
+    
