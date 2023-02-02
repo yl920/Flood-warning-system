@@ -49,26 +49,15 @@ def stations_by_distance(stations, p):
 #Sort the list by its 3rd entry in each tuple, i.e. its distance
     return sorted_by_key(list,2)
 
-
 ### 1D ###
 def rivers_with_station(stations):
 #Create a list of rivers as a set
-   ''' among = {station.river for station in stations}
-    return sorted_by_key(among,0)'''
-
-    #create a list from station to rivers
-    rivers = []
-    for station in stations:
-        if station.river not in rivers:
-            rivers.append(station.river)
-
-    return rivers
-
-
+    among = {station.river for station in stations}
+    return sorted_by_key(among,0)
 def stations_by_river(stations):
     riverlist = {station.river:station.name for station in stations}
-    return riverlist
-
+    return sorted(riverlist)
+    
 
 ### 1E ###
 
@@ -101,3 +90,4 @@ def rivers_by_station_number(stations, N):
         greatest -= 1
 
     return rivers
+
