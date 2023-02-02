@@ -8,8 +8,4 @@ In the case that there are more rivers with the same number of stations as the N
 '''
 
 from floodsystem.stationdata import build_station_list
-from floodsystem.utils import sorted_by_key
 
-def rivers_by_station_number(stations, N):
-    stations = build_station_list()
-    

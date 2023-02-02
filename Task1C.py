@@ -6,36 +6,6 @@ where stations is a list of MonitoringStation objects, centre is the coordinate 
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_within_radius
 
-#geo:
-'''
-from math import asin, sqrt, sin, cos, radians
-
-def haversine(a, b):
-    r = 6371
-    a_lat, a_lng = a[0], a[1]
-    b_lat, b_lng = b[0], b[1]
-
-    return 2 * r * asin(
-        sqrt(sin(radians((b_lat - a_lat) / 2)) ** 2
-             + cos(radians(a_lat))
-             * cos(radians(b_lat))
-             * sin(radians((b_lng - a_lng) / 2)) ** 2
-             )
-    )
-
-
-def stations_within_radius(stations, centre, r):
-    
-    stations_in = []
-
-    for station in stations:
-        centre_distance = haversine(centre, station.coord)
-        if centre_distance <= r:
-            stations_in.append(station.name)
-    return stations_in
-
-#geo)
-'''
 
 def run():
     
