@@ -14,7 +14,7 @@ from .station import *
 
 
 from math import asin, sqrt, sin, cos, radians
-
+#Haversine function calculates the distance between 2 tuples p and coord of each station and returns a tuple
 def haversine(a, b):
     r = 6371
     a_lat, a_lng = a[0], a[1]
@@ -40,17 +40,25 @@ def stations_within_radius(stations, centre, r):
             stations_in.append(station.name)
     return stations_in
 
-
     ### 1B ###
 def stations_by_distance(stations, p):   
-#Create new list "list" 
+#Create new list "list"
 #For each loop the name, town and distance for each station is produced as a tuple
 #these tuples are appended into the list "list"
-#Haversine function calculates the distance between 2 tuples p and coord of each station and returns a tuple
     list = [(station.name, station.town, haversine(station.coord, p)) for station in stations]
 #Sort the list by its 3rd entry in each tuple, i.e. its distance
     return sorted_by_key(list,2)
-    
+
+
+### 1D ###
+def rivers_with_station(stations):
+#Create a list of rivers as a set
+    among = {station.river for station in stations}
+    return sorted_by_key(among,0)
+def stations_by_river(stations):
+    riverlist = {station.river:station.name for station in stations}
+    return riverlist
+
 
 ### 1E ###
 
