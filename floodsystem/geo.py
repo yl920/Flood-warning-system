@@ -10,13 +10,13 @@ geographical data.
 from .utils import *
 from .station import *
 
-from haversine import haversine, Unit
+#from haversine import haversine, Unit
 
 
 
 
 
-"""
+
 from math import asin, sqrt, sin, cos, radians
 
 def haversine(a, b):
@@ -32,7 +32,7 @@ def haversine(a, b):
              )
     )
 
-"""
+
 ### 1C ###
 def stations_within_radius(stations, centre, r):
     
