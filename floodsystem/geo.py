@@ -13,10 +13,6 @@ from .station import *
 #from haversine import haversine, Unit
 
 
-
-
-
-
 from math import asin, sqrt, sin, cos, radians
 #Haversine function calculates the distance between 2 tuples p and coord of each station and returns a tuple
 def haversine(a, b):
@@ -53,6 +49,7 @@ def stations_by_distance(stations, p):
 #Sort the list by its 3rd entry in each tuple, i.e. its distance
     return sorted_by_key(list,2)
 
+
 ### 1D ###
 def rivers_with_station(stations):
 #Create a list of rivers as a set
@@ -61,3 +58,36 @@ def rivers_with_station(stations):
 def stations_by_river(stations):
     riverlist = {station.river:station.name for station in stations}
     return riverlist
+
+
+### 1E ###
+
+def rivers_by_station_number(stations, N):
+    
+    river_dict = stations_by_river(stations)
+    
+    rivers_station = []
+    for river in river_dict:
+        n = len(river_dict[river])  #number of stations in each river
+        rivers_station.append(river, n)
+
+
+    #compare the n to find the greatest
+    greatest = 0
+
+    for river in rivers_station:
+        if river[1] > greatest:
+            greatest = river[1]
+        else:
+            greatest = greatest
+
+    #add rivers to the list
+    rivers = []
+
+    while len(rivers) < N:
+        for n in rivers_station:
+            if n[1]  == greatest:
+                rivers.append(n)
+        greatest -= 1
+
+    return rivers
