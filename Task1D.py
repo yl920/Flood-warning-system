@@ -9,6 +9,7 @@ def run():
     sus = stations_by_river(stations)
 #Cambridge Thames and Aire
     print()
+    #prints the list of station names that has the key "River Cam"
     print(f'River Cam: {sus["River Cam"]}')
     print()
     print(f'River Thames: {sus["River Thames"]}')
