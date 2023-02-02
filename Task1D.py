@@ -7,7 +7,13 @@ def run():
     print(f"Number of rivers that have at least one monitoring station: {len(riz)}")
     print(f"First 10 -  {list(riz)[:10]}") #Print the first 10 names in the set
     sus = stations_by_river(stations)
-    print(sus)
+#Cambridge Thames and Aire
+    print()
+    print(f'River Cam: {sus["River Cam"]}')
+    print()
+    print(f'River Thames: {sus["River Thames"]}')
+    print()
+    print(f'River Aire: {sus["River Aire"]}')
 if __name__ == "__main__":
     print("*** Task 1D: CUED Part IA Flood Warning System ***")
     run()

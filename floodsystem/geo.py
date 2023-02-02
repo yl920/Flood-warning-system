@@ -67,10 +67,12 @@ def stations_by_river(stations):
     river_stations = {}
 
     for station in stations:
-        if station.river not in river_stations.key():
+        if station.river not in river_stations.keys():
             river_stations[station.river] = [station.name] #add station with new river to the lib
         else:
             river_stations[station.river].append (station.name)
+    for river in river_stations:
+        river_stations[river].sort()
 
     return river_stations  
 
