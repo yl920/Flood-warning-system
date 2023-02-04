@@ -52,14 +52,28 @@ def stations_by_distance(stations, p):
 
 ### 1D ###
 def rivers_with_station(stations):
-#Create a list of rivers as a set
-    among = {station.river for station in stations}
-    return sorted_by_key(among,0)
+
+    #create a list from station to rivers
+    rivers = []
+
+    for station in stations:
+        if station.river not in rivers:
+            rivers.append(station.river)
+
+    return sorted(rivers)
 
 
 def stations_by_river(stations):
-    riverlist = {station.river:station.name for station in stations}
-    return riverlist
+    #create a library from river to station
+    river_stations = {}
+
+    for station in stations:
+        if station.river not in river_stations.key():
+            river_stations[station.river] = [station.name] #add station with new river to the lib
+        else:
+            river_stations[station.river].append (station.name)
+
+    return river_stations  
 
 
 ### 1E ###
