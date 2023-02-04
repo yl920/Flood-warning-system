@@ -68,7 +68,7 @@ def stations_by_river(stations):
     river_stations = {}
 
     for station in stations:
-        if station.river not in river_stations.key():
+        if station.river not in river_stations.keys():
             river_stations[station.river] = [station.name] #add station with new river to the lib
         else:
             river_stations[station.river].append (station.name)
@@ -85,7 +85,7 @@ def rivers_by_station_number(stations, N):
     rivers_station = []
     for river in river_dict:
         n = len(river_dict[river])  #number of stations in each river
-        rivers_station.append(river, n)
+        rivers_station.append((river, n))
 
 
     #compare the n to find the greatest
@@ -107,3 +107,4 @@ def rivers_by_station_number(stations, N):
         greatest -= 1
 
     return rivers
+
