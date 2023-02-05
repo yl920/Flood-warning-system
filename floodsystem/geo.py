@@ -15,7 +15,7 @@ from .station import *
 
 from math import asin, sqrt, sin, cos, radians
 #Haversine function calculates the distance between 2 tuples p and coord of each station and returns a tuple
-def haversine(a, b):
+def haversine(a, b): #Mary
     r = 6371
     a_lat, a_lng = a[0], a[1]
     b_lat, b_lng = b[0], b[1]
@@ -29,8 +29,8 @@ def haversine(a, b):
     )
 
 
-### 1C ###
-def stations_within_radius(stations, centre, r):
+### 1C ### 
+def stations_within_radius(stations, centre, r): #Mary
     
     stations_in = []
 
@@ -41,7 +41,7 @@ def stations_within_radius(stations, centre, r):
     return stations_in
 
     ### 1B ###
-def stations_by_distance(stations, p):   
+def stations_by_distance(stations, p): #Andy
 #Create new list "list"
 #For each loop the name, town and distance for each station is produced as a tuple
 #these tuples are appended into the list "list"
@@ -51,19 +51,14 @@ def stations_by_distance(stations, p):
 
 
 ### 1D ###
-def rivers_with_station(stations):
-
-    #create a list from station to rivers
-    rivers = []
-
-    for station in stations:
-        if station.river not in rivers:
-            rivers.append(station.river)
-
-    return sorted(rivers)
+def rivers_with_station(stations): #Andy
+#Create a list of rivers as a set
+    among = {station.river for station in stations}
+#Sort set alphabetically
+    return sorted_by_key(among,0)
 
 
-def stations_by_river(stations):
+def stations_by_river(stations): #Mary
     #create a library from river to station
     river_stations = {}
 
@@ -78,7 +73,7 @@ def stations_by_river(stations):
 
 ### 1E ###
 
-def rivers_by_station_number(stations, N):
+def rivers_by_station_number(stations, N): #Mary 
     
     river_dict = stations_by_river(stations)
     

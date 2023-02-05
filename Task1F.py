@@ -1,7 +1,7 @@
 from floodsystem.stationdata import build_station_list
 from floodsystem.station import inconsistent_typical_range_stations
 
-def run():
+def run(): #Mary
     stations = build_station_list()
     inconsistent_data = inconsistent_typical_range_stations(stations)
     

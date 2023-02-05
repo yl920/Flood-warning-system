@@ -4,7 +4,7 @@
 """Unit test for the station module"""
 
 from floodsystem.station import MonitoringStation
-
+import pytest
 
 def test_create_monitoring_station():
 
@@ -25,3 +25,4 @@ def test_create_monitoring_station():
     assert s.typical_range == trange
     assert s.river == river
     assert s.town == town
+pytest *

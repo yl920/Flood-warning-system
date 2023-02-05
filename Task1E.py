@@ -10,9 +10,9 @@ In the case that there are more rivers with the same number of stations as the N
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import rivers_by_station_number
 
-def run():
+def run(): #Mary
 
-    stations = build_station_list()
+    stations = build_station_list() 
     N = 9
 
     river_station_number = rivers_by_station_number(stations, N)
