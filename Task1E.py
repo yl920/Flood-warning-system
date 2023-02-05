@@ -13,7 +13,7 @@ from floodsystem.geo import rivers_by_station_number
 def run(): #Mary
 
     stations = build_station_list() 
-    N = 9
+    N = 9    # the 9 rivers with greatest number of stations  
 
     river_station_number = rivers_by_station_number(stations, N)
 
