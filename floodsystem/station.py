@@ -54,9 +54,9 @@ def inconsistent_typical_range_stations(stations):
     inconsistent_stations = []
     
     for station in stations:
-        consistence = MonitoringStation.typical_range_consistent(station)
+        consistence = MonitoringStation.typical_range_consistent(station) # check if the station is inconsistent, output = True / False
         if consistence is False:
-            inconsistent_stations.append(station)
+            inconsistent_stations.append(station)  #only need inconsistent stations
     
     return inconsistent_stations
 
