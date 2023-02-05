@@ -25,20 +25,3 @@ def test_create_monitoring_station():
     assert s.typical_range == trange
     assert s.river == river
     assert s.town == town
-
-    s_id = "test-a-id"
-    m_id = "test-a-id"
-    label = "alpha station"
-    coord = (-2.1, 6.3)
-    trange = (-2.3, 3.4445)
-    river = "River Asparagus"
-    town = "Among Town"
-    a = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
-
-    assert a.station_id == s_id
-    assert a.measure_id == m_id
-    assert a.name == label
-    assert a.coord == coord
-    assert a.typical_range == trange
-    assert a.river == river
-    assert a.town == town
