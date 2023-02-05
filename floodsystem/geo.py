@@ -87,19 +87,19 @@ def rivers_by_station_number(stations, N): #Mary
     greatest = 0
 
     for river in rivers_station:
-        if river[1] > greatest:
+        if river[1] > greatest:    #river[1] is the number of stations for the river, iterate through the list to find the greatest number of stations 
             greatest = river[1]
-        else:
+        else:    
             greatest = greatest
 
     #add rivers to the list
     rivers = []
 
     while len(rivers) < N:
-        for n in rivers_station:
+        for n in rivers_station:  # if no. stations = greatest number, add it to the list, then decrease the greatest number by one to find the next river with the greatest number of stations
             if n[1]  == greatest:
                 rivers.append(n)
-        greatest -= 1
+        greatest -= 1   #iterate until no of rivers in the list reach N
 
     return rivers
 

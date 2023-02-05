@@ -1,13 +1,13 @@
 from floodsystem.stationdata import build_station_list
 from floodsystem.station import inconsistent_typical_range_stations
 
-def run(): #Mary
+def run():
     stations = build_station_list()
-    inconsistent_data = inconsistent_typical_range_stations(stations)
+    inconsistent_data = inconsistent_typical_range_stations(stations) #list of inconsistent stations
     
     inconsistent_station_names = []
 
-    for station in inconsistent_data:
+    for station in inconsistent_data:    #required to give list of station names only
         inconsistent_station_names.append(station.name)
 
     print('Stations with inconsistent data: ')
