@@ -1,13 +1,32 @@
 from floodsystem.geo import *
 from floodsystem.stationdata import *
 import pytest
-"""...
-def test_stations_by_distance():
-    stations = build_station_list
-    test = stations_by_distance(stations, (52.2053, 0.1218))
-    return test[:2]
-print(test_stations_by_distance())
-#assert test_stations_by_distance == ('Cambridge Jesus Lock', 'Cambridge', 0.8402364350834112), ('Bin Brook', 'Cambridge', 2.5022740869515525)
-"""
+class TestClass:
+
+    def test_stations_by_distance(self):
+        one = MonitoringStation(station_id='test_station_id_1',
+                                        measure_id='test_measure_id_1',
+                                        label='Test Station 1',
+                                        coord=(0., 1.),
+                                        typical_range=(0., 1.),
+                                        river='test_river_1',
+                                        town='test_town_1')
+        two = MonitoringStation(station_id='test_station_id_2',
+                                        measure_id='test_measure_id_2',
+                                        label='Test Station 2',
+                                        coord=(1., 1.),
+                                        typical_range=(0., 1.),
+                                        river='test_river_2',
+                                        town='test_town_2')
+        stations = [one, two]
+        new = stations_by_distance(stations, (0., 0.))
+        assert new[0][0:2] == ('Test Station 1', 'test_town_1')
+        assert new[1][0:2] == ('Test Station 2', 'test_town_2')
+
+    def test_haversine(self):
+        assert haversine((0., 0.), (0., 0.)) == 0.0
+        assert round(haversine((0., 0.), (1., 1.)), 1) == 157.2
+        assert round(haversine((0., 0.), (6.9, 8.008)), 1) == 1173.8
 
 
+    
