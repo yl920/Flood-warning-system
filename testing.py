@@ -5,6 +5,11 @@ where stations is a list of MonitoringStation objects, centre is the coordinate 
 
 
 from floodsystem.geo import *
+from test_station import *
 
 
-print(haversine((0.0,0.0),(6.9,8.008)))
+def run():
+    station = test_create_monitoring_station()
+    new = rivers_with_station(station)
+    print(new)
+run()
