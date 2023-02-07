@@ -26,7 +26,7 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
 
-"""#Test Task1F
+#Test Task1F Mary
 def test_typical_range_consistent(self):
     assert MonitoringStation("111", "111", "station1", (0., 1.), (1., 4.), "River 1",
                                  "Town 1").typical_range_consistent() == True
@@ -71,5 +71,5 @@ def test_inconsistent_typical_range_stations(self):
         assert inconsistent_typical_range_stations([station2, station3]) == [station2.name, station3.name]
         assert inconsistent_typical_range_stations([station4, station2, station3]) == [station2.name, station3.name,
                                                                                        station4.name]
-"""
+
 
