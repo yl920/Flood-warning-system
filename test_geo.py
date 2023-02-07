@@ -1,7 +1,7 @@
 from floodsystem.geo import *
 from floodsystem.stationdata import *
 from test_station import *
-import pytest
+# import pytest
 class TestClass:
 
     def test_stations_by_distance(self): #Task B
@@ -113,6 +113,6 @@ class TestClass:
         river_list = rivers_by_station_number(stations, 2)
         assert len(river_list) == 3
         assert "River 4" not in [item[0] for item in river_list]
-        
+
         for river in ["River 1", "River 2", "River 3"]:
             assert river in [item[0] for item in river_list]
