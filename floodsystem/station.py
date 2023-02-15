@@ -48,6 +48,18 @@ class MonitoringStation:
         else:
             return True
 
+    def relative_water_level(self):
+        from .stationdata import update_water_levels
+        update_water_levels(self)
+        
+        if self.latest_level != None:
+            latest_water_level = self.latest_level
+            fraction = float(latest_water_level / self.typical_range)
+            return fraction
+        else:
+            return None
+
+
 
 def inconsistent_typical_range_stations(stations):
 
