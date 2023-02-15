@@ -63,7 +63,7 @@ def build_station_list(use_cache=True):
     return stations
 
 
-def update_water_levels(stations):
+def update_water_levels(s):
     """Attach level data contained in measure_data to stations"""
 
     # Fetch level data
@@ -78,7 +78,7 @@ def update_water_levels(stations):
             measure_id_to_value[measure_id] = latest_reading['value']
 
     # Attach latest reading to station objects
-    for station in stations:
+    for station in s:
 
         # Reset latestlevel
         station.latest_level = None
