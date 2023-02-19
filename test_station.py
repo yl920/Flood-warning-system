@@ -28,7 +28,7 @@ def test_create_monitoring_station():
     assert s.river == river
     assert s.town == town
 
-#Test Task1F
+#Test Task1F Mary
 def test_inconsistent_typical_range_stations():
     s_id = "test-s-id"
     m_id = "test-m-id"
