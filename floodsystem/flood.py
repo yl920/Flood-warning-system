@@ -24,15 +24,10 @@ def stations_highest_rel_level(stations, N):
     stationdata.update_water_levels(stations)
 
     for station in stations:
-        if station.relative_water_level(station.latest_level) is not None:
-            name_and_level = (station, station.relative_water_level(station.latest_level))
+        if station.relative_water_level() is not None:
+            name_and_level = (station.name, station.relative_water_level())
             stations_rel_level.append(name_and_level)
 
     sorted_n_stations_rel_level = sorted_by_key(stations_rel_level, 1, reverse=True)[:N]
   
-    qualified_list = []
-    
-    for n in sorted_n_stations_rel_level:
-        qualified_list.append(n[0])
-
-    return qualified_list
+    return sorted_n_stations_rel_level
