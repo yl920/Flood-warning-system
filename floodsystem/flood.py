@@ -25,9 +25,9 @@ def stations_highest_rel_level(stations, N):
 
     for station in stations:
         if station.relative_water_level() is not None:
-            name_and_level = (station.name, station.relative_water_level())
+            name_and_level = (station.name, station.relative_water_level()) #tuples of station name and rel water level
             stations_rel_level.append(name_and_level)
 
-    sorted_n_stations_rel_level = sorted_by_key(stations_rel_level, 1, reverse=True)[:N]
+    sorted_n_stations_rel_level = sorted_by_key(stations_rel_level, 1, reverse=True)[:N]  #sort by relative water level in descending order and get greatest N
   
     return sorted_n_stations_rel_level
