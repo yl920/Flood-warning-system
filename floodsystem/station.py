@@ -48,12 +48,13 @@ class MonitoringStation:
         else:
             return True
 
-    def relative_water_level(self):
+    def relative_water_level(self, latest_level):
 
-        if self.typical_range_consistent() == False:  #check consistency
+
+        if self.typical_range_consistent() == False:
             return None
 
-        try:  #calculate fraction for relative water level
+        try:
             return (self.latest_level-self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
 
         except:
