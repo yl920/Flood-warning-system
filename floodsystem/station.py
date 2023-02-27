@@ -40,10 +40,10 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-        #
+        """Return True if range data is consistent, else False if inconsistent"""
         if not(self.typical_range):
             return False
-        elif self.typical_range[1]<self.typical_range[0]:
+        elif self.typical_range[1] < self.typical_range[0]:
             return False
         else:
             return True
