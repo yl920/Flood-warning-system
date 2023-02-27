@@ -14,6 +14,7 @@ def sorts(station):
 def run():
     stations = build_station_list()
     update_water_levels(stations)
+    #sort stations by relative water levels
     stations.sort(key=sorts, reverse=True)
     #highest 5 stations
     count = 0
@@ -21,7 +22,6 @@ def run():
         #plot water levels over past 10 days for 5 highest stations
         dt = 10
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        
         if dates:
             plot_water_levels(station, dates, levels)
             count = count + 1
