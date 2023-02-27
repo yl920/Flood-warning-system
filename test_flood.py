@@ -1,7 +1,7 @@
 from floodsystem.flood import *
 from floodsystem.stationdata import MonitoringStation
 
-class TestClass:
+class TestClass: 
     def test_stations_level_over_threshold(self):
         station1 = MonitoringStation(station_id='test_station_id_1',
                                      measure_id='test_measure_id_1',
