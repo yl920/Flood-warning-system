@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
-from floodsystem.plot import plot_water_levels
+from floodsystem.plot import *
 import datetime
 from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.stationdata import MonitoringStation
 import numpy as np
+from matplotlib.dates import num2date
+from floodsystem.stationdata import MonitoringStation
 
 class TestClass:
     def test_plot_water_levels(self): #Mary 2E
