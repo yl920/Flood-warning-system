@@ -1,5 +1,3 @@
-import matplotlib 
-from .station import MonitoringStation
 import matplotlib.pyplot as plt
 
 def plot_water_levels(station, dates, levels):
@@ -26,4 +24,3 @@ def plot_water_levels(station, dates, levels):
     plt.show
     
     return
-

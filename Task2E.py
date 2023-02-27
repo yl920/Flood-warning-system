@@ -10,7 +10,7 @@ def run():
     #highest 5 stations
     N = 5
     highest_5_stations = stations_highest_rel_level(stations, N)  
-
+    
     #plot water levels over past 10 days for 5 highest stations
     dt = 10
 
@@ -22,5 +22,4 @@ def run():
 if __name__ == "__main__":
     print("*** Task 2E: CUED Part IA Flood Warning System ***")
     run()    
-
 
