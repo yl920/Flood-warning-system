@@ -1,8 +1,6 @@
-import matplotlib.pyplot as plt
 import matplotlib 
 from .station import MonitoringStation
-
-from .analysis import *
+import matplotlib.pyplot as plt
 
 def plot_water_levels(station, dates, levels):
 
@@ -26,17 +24,6 @@ def plot_water_levels(station, dates, levels):
     plt.tight_layout()
 
     plt.show
-    
-    return
-
-def plot_water_level_with_fit(station, dates, levels, p):
-    """Display water level data alongside best-fit polynomial"""
-    poly, offset = polyfit(dates, levels, p)
-    x = matplotlib.dates.date2num(dates)
-
-    # Plot water level data and best fit polynomial
-    plt.plot(dates, poly(x - offset), label = "best fit polynomial")
-    plot_water_levels(station, dates, levels)
     
     return
 
