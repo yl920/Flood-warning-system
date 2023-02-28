@@ -57,6 +57,8 @@ def run():
                 mod.append(subject)
             elif rel < threshold_mod:
                 low.append(subject)
+            elif subject is None and rel < threshold_high:
+                null.append(subject)
             else:
                 null.append(subject)
 
@@ -68,21 +70,19 @@ def run():
         # Then, if water level rising, upgrade warning level to severe
         if subject in high:
             try:
-                # Create best-fit polynomial to approximate water level data over past 5 days
+                # Create best-fit polynomial to approximate water level data over past 10 days
                 measure_id = station.measure_id
-                dates, levels = fetch_measure_levels(measure_id, datetime.timedelta(days=5))
-                bestfit, offset = polyfit(dates, levels, p=4)
-                derivative = np.polyder(bestfit) # Differentiate best-fit polynomial
-                # Estimate if water level rising or falling at the most recent data point
-                gradient = derivative(matplotlib.dates.date2num(dates[0]) - offset) # Evaluate gradient
-                # Gradients which are positive but close to 0 are ignored here
-                if gradient > 1:
+                days = 10 #last 10 days
+                p = 4 #polynomial of 4th order
+                dates, levels = fetch_measure_levels(measure_id, datetime.timedelta(days))
+                polynomial, offset = polyfit(dates, levels, p) #generate polynomial with data from past 10 days
+                gradient = np.polyder(polynomial)(matplotlib.dates.date2num(dates[0]) - offset) #evaluate the first derivative of polynomial and obtain gradient
+                #gradients that are greater than 1 indicate a trend for water rising quickly...
+                if gradient > 1.0:
                     high.remove(subject)
-                    severe.append(subject)
-            # Some stations have faulty data - no useful polynomial fit, so leave in current warning category
-            except IndexError:
-                pass
-            except KeyError:
+                    severe.append(subject)#thus promote to severe risk
+            #filter out stations with faulty data as they would produce a useless polynomial
+            except IndexError or KeyError:
                 pass
     
     severe.sort()
