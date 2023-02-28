@@ -16,20 +16,20 @@ def run():
     update_water_levels(stations)
     
     #This part sets the thresholds
-    threshold_severe = float(input("Please input a the percentage of the original level that would be considered severe (without the percentage sign): "))/100
+    threshold_severe = float(input("Please input a percentage of the original water level that would be considered severe: _____%"))/100
     #obtains the precentage of the threshold, for which the original level is compared to the typical value over the last 24 hours
     if threshold_severe < 0: #filter out invalid numbers
         print("Please enter a valid value!!!")
         quit()
     else:
         pass
-    threshold_high = float(input("Please do the same for high threshold: "))/100
+    threshold_high = float(input("Please do the same for high threshold: _____%"))/100
     if threshold_high < 0 or threshold_high>threshold_severe:
         print("Please enter a valid value!!!")
         quit()
     else:
         pass
-    amogus = float(input("Please do the same for moderate threshold: "))
+    amogus = float(input("Please do the same for moderate threshold: _____%"))
     threshold_mod = amogus/100
     if threshold_mod < 0 or threshold_mod>threshold_high:
         print("Please enter a valid value!!!")
@@ -48,6 +48,7 @@ def run():
             # Only include these stations if the flood warning is high/severe
             if subject is None and rel >= threshold_high: #for stations that have station.town=None and at high or more risk...
                 subject = f"The following station does not have data: {station.name}"#...raise warning indicating unnamed at-risk station
+            #compares relative water level to the thresholds, and sorts the subject into the appropriate catergories
             if rel >= threshold_severe:
                 severe.append(subject)
             elif rel < threshold_severe and rel >= threshold_high:
@@ -58,41 +59,7 @@ def run():
                 low.append(subject)
             else:
                 null.append(subject)
-            """
-            if subject in severe:#if the subject is already labelled severe, move on...
-                pass
-            elif subject in high:
-                if rel >= threshold_severe:#if the subject exceeds severe threshold, remove from high and add to severe
-                    severe.append(subject)
-                    high.remove(subject)
-            elif subject in mod:
-                if rel >= threshold_severe:#if the subject exceeds severe threshold, remove from moderate and add to severe
-                    severe.append(subject)
-                    mod.remove(subject)
-                elif rel >= threshold_high:#...similar to above
-                    high.append(subject)
-                    mod.remove(subject)
-            elif subject in low:
-                if rel >= threshold_severe:
-                    severe.append(subject)
-                    low.remove(subject)
-                elif rel >= threshold_high:
-                    high.append(subject)
-                    low.remove(subject)
-                elif rel >= threshold_mod:
-                    mod.append(subject)
-                    low.remove(subject)
-            else:#if subject is not already placed in a list, 
-                if rel >= threshold_severe:#...still the same
-                    severe.append(subject)
-                elif rel >= threshold_high:
-                    high.append(subject)
-                elif rel >= threshold_mod:
-                    mod.append(subject)
-                elif rel < threshold_mod:#if the subject is not in any list but still is not None, that implies subject has value lower than moderate threshold and placed in low risk
-                    low.append(subject)
-                else: null.append(subject)#otherwise append subject to list with faulty data
-                """
+
         else:
             pass
         
@@ -120,12 +87,13 @@ def run():
     
     severe.sort()
     high.sort()
+    mod.sort()
 
-    print(f"Severe Risk:\n{severe}\n")
-    print(f"High Risk:\n{high}\n")
-    print(f"Moderate Risk:\n{len(mod)} towns\n")
-    print(f"Low Risk:\n{len(low)} towns\n")
-    print(f"No Reliable Data:\n{len(null)} towns\n")
+    print(f"List of towns at severe risk:\n{severe}\n")
+    print(f"List of towns at high risk:\n{high}\n")
+    print(f"List of towns at moderate risk::\n{mod}\n")
+    print(f"List of towns in low risk:\n{low[:10]} ... and {len(low)-10} other towns\n")
+    print(f"Towns with faulty data:\n{len(null)} towns\n")
 
 if __name__ == "__main__":
     run()
