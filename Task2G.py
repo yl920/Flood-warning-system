@@ -5,7 +5,7 @@ import numpy as np
 import datetime
 import matplotlib.dates
 from floodsystem.station import *
-
+#Andy
 def run():
     null = []#create empty list of stations with different catergories
     low = []
@@ -14,8 +14,11 @@ def run():
     severe = []
     stations = build_station_list()
     update_water_levels(stations)
-    threshold_severe = float(input("Please input a the percentage of the original level that would be considered severe (without the percentage sign): "))/100 #
-    if threshold_severe < 0:
+    
+    #This part sets the thresholds
+    threshold_severe = float(input("Please input a the percentage of the original level that would be considered severe (without the percentage sign): "))/100
+    #obtains the precentage of the threshold, for which the original level is compared to the typical value over the last 24 hours
+    if threshold_severe < 0: #filter out invalid numbers
         print("Please enter a valid value!!!")
         quit()
     else:
@@ -35,17 +38,10 @@ def run():
     else:
         pass
     print(f"According to the data you entered, the threshold for low risk is below {amogus}%.")
+
+    #This part creates lists according to the entered thresholds
     for station in stations:#calculate range with typical data
         if station.typical_range_consistent() and station.latest_level is not None: #filter out inconsistent data
-            # it takes the percentage difference between what the water level at the station is now 
-            # and the averaged water level at the station over the last 24 hours
-
-            # If the percentage of water level is compared to the previous day:
-            # >120%  - severe risk
-            # 105% - 120%  - high risk
-            # 80% - 105% - moderate risk
-            # <80% - low risk
-
             rel=station.relative_water_level(station.latest_level)
             subject = station.town
             # Some stations have .town = None
