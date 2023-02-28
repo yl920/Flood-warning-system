@@ -14,14 +14,29 @@ def run():
     severe = []
     stations = build_station_list()
     update_water_levels(stations)
-    threshold_severe = float(input("severe")) #threshold
-    threshold_high = float(input("high"))
-    threshold_mod = float(input("mod"))
-    print("placeholder")
+    threshold_severe = float(input("Please input a the percentage of the original level that would be considered severe (without the percentage sign): "))/100 #
+    if threshold_severe < 0:
+        print("Please enter a valid value!!!")
+        quit()
+    else:
+        pass
+    threshold_high = float(input("Please do the same for high threshold: "))/100
+    if threshold_high < 0 or threshold_high>threshold_severe:
+        print("Please enter a valid value!!!")
+        quit()
+    else:
+        pass
+    amogus = float(input("Please do the same for moderate threshold: "))
+    threshold_mod = amogus/100
+    if threshold_mod < 0 or threshold_mod>threshold_high:
+        print("Please enter a valid value!!!")
+        quit()
+
+    else:
+        pass
+    print(f"According to the data you entered, the threshold for low risk is below {amogus}%.")
     for station in stations:#calculate range with typical data
         if station.typical_range_consistent() and station.latest_level is not None: #filter out inconsistent data
-
-            # The function that calculates the risk of flooding is as follows: 
             # it takes the percentage difference between what the water level at the station is now 
             # and the averaged water level at the station over the last 24 hours
 
